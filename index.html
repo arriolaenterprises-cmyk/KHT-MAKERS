@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHT Makers | Building & Rental Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #f38120;
+            --dark-bg: #2c323a;
+            --form-bg: #3a414a;
+            --text-light: #ffffff;
+            --text-gray: #b0b3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-light); line-height: 1.6; scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: rgba(0,0,0,0.5); position: absolute; width: 100%; z-index: 1000; }
+        .nav-links a { text-decoration: none; color: var(--text-light); margin-left: 30px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-orange); }
+
+        /* Hero Section */
+        .hero { 
+            height: 80vh; 
+            background: linear-gradient(rgba(44, 50, 58, 0.85), rgba(44, 50, 58, 0.85)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000') center/cover; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px; 
+        }
+        
+        /* Logo Styling */
+        .hero .logo-container { margin-bottom: 20px; width: 100%; text-align: center; }
+        .hero .logo-container img { height: 120px; width: auto; display: inline-block; }
+
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; max-width: 700px; color: var(--text-gray); }
+
+        /* General Button Styling */
+        .submit-btn { 
+            background: var(--primary-orange); 
+            color: white; 
+            text-decoration: none; 
+            padding: 15px 35px; 
+            border-radius: 4px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #d66d10; transform: translateY(-2px); }
+
+        /* About Section */
+        .section-padding { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { color: var(--primary-orange); font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .section-title .divider { width: 60px; height: 3px; background: var(--primary-orange); margin: 0 auto 25px; }
+        .section-title p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-gray); line-height: 1.8; }
+
+        /* Services Grid - 4 in a Row */
+        .services-grid { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 80px; }
+        .service-card { background: rgba(255,255,255,0.05); border: 1px solid #444; border-radius: 8px; flex: 1; padding: 25px; transition: 0.3s; display: flex; flex-direction: column; }
+        .service-card:hover { border-color: var(--primary-orange); background: rgba(255,255,255,0.08); transform: translateY(-5px); }
+        .service-card h3 { font-size: 1.1rem; margin-bottom: 15px; color: #fff; height: 3rem; display: flex; align-items: center; text-transform: uppercase; }
+        .service-card p { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; flex-grow: 1; }
+        .service-img-small { width: 100%; height: 140px; object-fit: cover; border-radius: 4px; border: 1px solid #555; }
+
+        /* Forms Section */
+        .forms-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .form-box { background: var(--form-bg); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .form-box h3 { margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-orange); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #fff; border: none; border-radius: 4px; font-family: inherit; font-size: 0.9rem; }
+        
+        .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 4px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .btn-construction { background: var(--primary-orange); color: #fff; }
+        .btn-rental { background: #fff; color: var(--dark-bg); }
+        .btn-submit:hover { opacity: 0.9; }
+
+        /* Floating Buttons */
+        .floating-btn { position: fixed; bottom: 25px; padding: 12px 25px; border-radius: 30px; display: flex; align-items: center; color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: 0.3s; }
+        .floating-btn:hover { transform: scale(1.05); }
+        .fb-msgr { left: 25px; background: #0084FF; }
+        .wa-chat { right: 25px; background: #25D366; }
+
+        footer { text-align: center; padding: 50px; font-size: 0.85rem; color: #777; border-top: 1px solid #3d444d; background: #23282f; }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .services-grid { flex-wrap: wrap; }
+            .service-card { flex: 0 0 calc(50% - 10px); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .forms-wrapper { grid-template-columns: 1fr; }
+            .service-card { flex: 0 0 100%; }
+            nav { justify-content: center; }
+            .nav-links { display: none; } /* Hide menu on mobile for clean look */
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <header class="hero">
+      <div class="logo-text">
+             <img src="logo1.png" alt="KHT Makers Logo"></img>
+        </div>
+        <p>Expert House Construction, Precision Welding, and Quality Rental Living.</p>
+      
+    </header>
+
+    <section id="about" class="section-padding">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <div class="divider"></div>
+            <p>KHT Makers is your trusted partner for creating and maintaining spaces. Combining expert precision in building construction, renovations, extensions, carpentry, and welding with meticulously managed rental property services, we deliver quality foundations for life and community. Whether we are building your dream project from the ground up or providing a modern home, our commitment to excellence is unwavering.</p>
+        </div>
+    </section>
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+    /* New styling for the icons */
+    .service-icon {
+        color: var(--primary-orange);
+        margin-bottom: 15px;
+        display: block;
+    }
+    .service-card h3 {
+        height: auto; /* Adjusted for better spacing with icons */
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<section id="services" class="section-padding" style="background: rgba(0,0,0,0.2);">
+    <div class="section-title">
+     <h2>Our Services</h2>
+            <div class="divider"></div>
+     <p>Building Excellence, Sustaining Communities. Our precision craftsmanship and structural expertise ensure every construction and renovation project exceeds expectations, while our rental management provides secure, modern homes. We are your trusted partner for creating and providing foundations for life.</p>
+        </div>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">
+             <img src="icon1.png" alt="Const Icon" class="custom-icon">
+            </div>
+            <div><h3>House Construction</h3></div>
+            <p>Expert ground-up development, blueprints, and turnkey project management for residential structures.</p>
+             <img src="house.jpg?auto=format&fit=crop&q=80&w=400" class="service-img-small" alt="Construction">
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                 <img src="icon2.png" alt="Renov Icon" class="custom-icon">
+            </div>
+            <h3>Renovations & Extensions</h3>
+            <p>Modernize existing spaces, add floor area, and breathe new life into your property with seamless solutions.</p>
+             <img src="home-extension.jpg?auto=format&fit=crop&q=80&w=400" class="service-img-small" alt="Renovation">
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                 <img src="icon3.png" alt="Weld Icon" class="custom-icon">
+            </div>
+            <h3>Carpentry & Welding</h3>
+            <p>Precision woodwork and metal fabrication for custom fixtures, structural elements, and fine finishing.</p>
+             <img src="wood.jpg?auto=format&fit=crop&q=80&w=400" class="service-img-small" alt="Welding">
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+         <img src="icon4.png" alt="Rent Icon" class="custom-icon">
+            </div>
+            <h3>Rental Rooms (4 Units)</h3>
+            <p>Quality living spaces with modern amenities, all-inclusive options, and dedicated management.</p>
+           <img src="rooms.avif?auto=format&fit=crop&q=80&w=400" class="service-img-small" alt="Rentals">
+        </div>
+    </div>
+</section>
+
+<script>
+  lucide.createIcons();
+</script>
+
+
+ 
+        <div id="contact" class="forms-wrapper">
+            <div class="form-box">
+                <h3>Request a Construction Quote</h3>
+                <form>
+                    <div class="form-row">
+                        <select><option>Project Type</option></select>
+                        <input type="text" placeholder="Estimated Budget">
+                    </div>
+                    <textarea rows="5" placeholder="Message"></textarea>
+                    <button type="submit" class="btn-submit btn-construction">Construction Inquiry</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Inquire About Rental Availability</h3>
+                <form>
+                    <div class="form-row">
+                        <input type="text" placeholder="Name">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" placeholder="Phone">
+                        <select><option>Preferred Unit</option></select>
+                    </div>
+                    <input type="text" placeholder="Move-in Date">
+                    <button type="submit" class="btn-submit btn-rental">Rental Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <a href="https://m.me/yourpage" class="floating-btn fb-msgr" target="_blank">
+        Messenger (Rentals)
+    </a>
+    
+    <a href="https://wa.me/yournumber" class="floating-btn wa-chat" target="_blank">
+        WhatsApp (Construction)
+    </a>
+
+    <footer>
+        &copy; 2026 KHT Makers. Port Moresby, Papua New Guinea<br>
+        <small style="opacity: 0.5;">Building Excellence & Quality Living</small>
+    </footer>
+
+</body>
+</html>
